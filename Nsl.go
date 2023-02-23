@@ -22,7 +22,9 @@ func main() {
 	signal.Ignore(syscall.SIGINT, syscall.SIGHUP)
 	clearScreen()
 
-	data, _ := os.Open("AA.txt")
+	path, _ := os.Executable()
+	AAPath:= path + "_AA.txt"
+	data, _ := os.Open(AAPath)
 	defer data.Close()
 	scanner := bufio.NewScanner(data)
 	lines := make([]string, 0, 100)
